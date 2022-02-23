@@ -28,3 +28,11 @@ resource "aws_subnet" "private_1a" {
     Name = "book_question_private-1a"
   }
 }
+
+resource "aws_internet_gateway" "main" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = "book_question_private_igw"
+  }
+}
