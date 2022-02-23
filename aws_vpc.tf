@@ -17,3 +17,14 @@ resource "aws_subnet" "public_1a" {
     Name = "book_question_public-1a"
   }
 }
+
+resource "aws_subnet" "private_1a" {
+  vpc_id = aws_vpc.main.id
+
+  availability_zone = "ap-northeast-1a"
+  cidr_block        = "10.0.10.0/24"
+
+  tags = {
+    Name = "book_question_private-1a"
+  }
+}
