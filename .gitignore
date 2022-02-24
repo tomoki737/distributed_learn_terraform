@@ -5,9 +5,12 @@
 .env
 
 # Terraform
+.terraform
 .Terraform
 *.tfstate
 *.tfstate.backup
 question
 question.pub
 rds_pass.tf
+book
+book.pub
