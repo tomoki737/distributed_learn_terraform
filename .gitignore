@@ -8,3 +8,5 @@
 .Terraform
 *.tfstate
 *.tfstate.backup
+question
+question.pub
