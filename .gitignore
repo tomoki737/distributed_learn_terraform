@@ -10,4 +10,4 @@
 *.tfstate.backup
 question
 question.pub
-rds_password.tfvars
+rds_password.tf
