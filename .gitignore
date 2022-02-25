@@ -11,6 +11,6 @@
 *.tfstate.backup
 question
 question.pub
-rds_pass.tf
+variabable.tf
 book
 book.pub

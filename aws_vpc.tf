@@ -20,6 +20,18 @@ resource "aws_subnet" "public_1a" {
   }
 }
 
+resource "aws_subnet" "public_1c" {
+  vpc_id                  = aws_vpc.main.id
+  map_public_ip_on_launch = true
+  availability_zone       = "ap-northeast-1c"
+
+  cidr_block = "10.0.2.0/24"
+
+  tags = {
+    Name = "book_question_public-1c"
+  }
+}
+
 resource "aws_subnet" "private_1a" {
   vpc_id = aws_vpc.main.id
 

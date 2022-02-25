@@ -1,4 +1,4 @@
-resource "aws_instance" "hello-world" {
+resource "aws_instance" "book_question_instance" {
   ami                    = "ami-08a8688fb7eacb171"
   instance_type          = "t2.micro"
   subnet_id              = aws_subnet.public_1a.id
@@ -14,3 +14,5 @@ resource "aws_key_pair" "question" {
   key_name   = "question"
   public_key = file("./question.pub")
 }
+
+
