@@ -1,13 +1,13 @@
-resource "aws_security_group" "book_question_instance_sg" {
+resource "aws_security_group" "distributed_learning_instance_sg" {
   vpc_id = aws_vpc.main.id
-  name   = "book_question_sg"
+  name   = "distributed_learning_sg"
   tags = {
-    Name = "book_question_sg"
+    Name = "distributed_learning_sg"
   }
 }
 
 resource "aws_security_group_rule" "in_ssh" {
-  security_group_id = aws_security_group.book_question_instance_sg.id
+  security_group_id = aws_security_group.distributed_learning_instance_sg.id
   type              = "ingress"
   cidr_blocks       = [var.my_ip]
   from_port         = 22
@@ -17,15 +17,15 @@ resource "aws_security_group_rule" "in_ssh" {
 
 resource "aws_security_group_rule" "in_http" {
   type              = "ingress"
-  security_group_id = aws_security_group.book_question_instance_sg.id
-  source_security_group_id = aws_security_group.book_question_alb_sg.id
+  security_group_id = aws_security_group.distributed_learning_instance_sg.id
+  source_security_group_id = aws_security_group.distributed_learning_alb_sg.id
   from_port         = 80
   to_port           = 80
   protocol          = "tcp"
 }
 
 resource "aws_security_group_rule" "out_all" {
-  security_group_id = aws_security_group.book_question_instance_sg.id
+  security_group_id = aws_security_group.distributed_learning_instance_sg.id
   type              = "egress"
   cidr_blocks       = ["0.0.0.0/0"]
   from_port         = 0
@@ -35,10 +35,10 @@ resource "aws_security_group_rule" "out_all" {
 
 
 resource "aws_security_group" "praivate-db-sg" {
-    name = "book_question_db_sg"
+    name = "distributed_learning_db_sg"
     vpc_id = aws_vpc.main.id
     tags = {
-      Name = "book_question_db_sg"
+      Name = "distributed_learning_db_sg"
     }
 }
 
@@ -63,8 +63,8 @@ resource "aws_security_group_rule" "out_db" {
 
 
 #ALB
-resource "aws_security_group" "book_question_alb_sg" {
-    name = "book_question_alb_sg"
+resource "aws_security_group" "distributed_learning_alb_sg" {
+    name = "distributed_learning_alb_sg"
     vpc_id = aws_vpc.main.id
     ingress {
         from_port = 80
@@ -81,7 +81,7 @@ resource "aws_security_group" "book_question_alb_sg" {
     }
 
     tags = {
-      Name = "book_question_alb_sg"
+      Name = "distributed_learning_alb_sg"
     }
 }
 

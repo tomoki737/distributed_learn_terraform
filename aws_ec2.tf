@@ -1,18 +1,18 @@
-resource "aws_instance" "book_question_instance" {
+resource "aws_instance" "distributed_learning_instance" {
   ami                    = "ami-08a8688fb7eacb171"
   instance_type          = "t2.micro"
   subnet_id              = aws_subnet.public_1a.id
-  vpc_security_group_ids = [aws_security_group.book_question_instance_sg.id]
-  key_name               = aws_key_pair.question.id
+  vpc_security_group_ids = [aws_security_group.distributed_learning_instance_sg.id]
+  key_name               = aws_key_pair.learning.id
   tags = {
-    Name = "book_question_instance"
+    Name = "distributed_learning_instance"
   }
 
 }
 
-resource "aws_key_pair" "question" {
-  key_name   = "question"
-  public_key = file("./question.pub")
+resource "aws_key_pair" "learning" {
+  key_name   = "learning"
+  public_key = file("learning.pem.pub")
 }
 
 

@@ -4,7 +4,7 @@ resource "aws_vpc" "main" {
   enable_dns_support   = true
   enable_dns_hostnames = true
   tags = {
-    Name = "book_question_vpc"
+    Name = "distributed_learning_vpc"
   }
 }
 
@@ -16,7 +16,7 @@ resource "aws_subnet" "public_1a" {
   cidr_block = "10.0.1.0/24"
 
   tags = {
-    Name = "book_question_public-1a"
+    Name = "distributed_learning_public-1a"
   }
 }
 
@@ -28,7 +28,7 @@ resource "aws_subnet" "public_1c" {
   cidr_block = "10.0.2.0/24"
 
   tags = {
-    Name = "book_question_public-1c"
+    Name = "distributed_learning_public-1c"
   }
 }
 
@@ -39,7 +39,7 @@ resource "aws_subnet" "private_1a" {
   cidr_block        = "10.0.10.0/24"
 
   tags = {
-    Name = "book_question_private-1a"
+    Name = "distributed_learning_private-1a"
   }
 }
 
@@ -50,7 +50,7 @@ resource "aws_subnet" "private_1c" {
   cidr_block        = "10.0.20.0/24"
 
   tags = {
-    Name = "book_question_private_1c"
+    Name = "distributed_learning_private_1c"
   }
 }
 
@@ -58,7 +58,7 @@ resource "aws_internet_gateway" "main" {
   vpc_id = aws_vpc.main.id
 
   tags = {
-    Name = "book_question_igw"
+    Name = "distributed_learning_igw"
   }
 }
 
@@ -66,7 +66,7 @@ resource "aws_route_table" "public" {
   vpc_id = aws_vpc.main.id
 
   tags = {
-    Name = "book_question_private_public"
+    Name = "distributed_learning_private_public"
   }
 }
 

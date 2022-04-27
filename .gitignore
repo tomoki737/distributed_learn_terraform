@@ -9,8 +9,6 @@
 .Terraform
 *.tfstate
 *.tfstate.backup
-question
-question.pub
-variabable.tf
-book
-book.pub
+learning.pem
+learning.pem.pub
+var.tf
