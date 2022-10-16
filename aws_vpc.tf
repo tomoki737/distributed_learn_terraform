@@ -1,4 +1,3 @@
-#EC2
 resource "aws_vpc" "main" {
   cidr_block           = "10.0.0.0/16"
   enable_dns_support   = true
@@ -66,7 +65,7 @@ resource "aws_route_table" "public" {
   vpc_id = aws_vpc.main.id
 
   tags = {
-    Name = "distributed_learning_private_public"
+    Name = "distributed_learning_route_table"
   }
 }
 
@@ -78,6 +77,11 @@ resource "aws_route" "public" {
 
 resource "aws_route_table_association" "public_1a" {
   subnet_id      = aws_subnet.public_1a.id
+  route_table_id = aws_route_table.public.id
+}
+
+resource "aws_route_table_association" "public_1c" {
+  subnet_id      = aws_subnet.public_1c.id
   route_table_id = aws_route_table.public.id
 }
 

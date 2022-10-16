@@ -1,4 +1,4 @@
-resource "aws_security_group" "distributed_learning_instance_sg" {
+resource "aws_security_group" "task_sg" {
   vpc_id = aws_vpc.main.id
   name   = "distributed_learning_sg"
   tags = {
@@ -6,18 +6,9 @@ resource "aws_security_group" "distributed_learning_instance_sg" {
   }
 }
 
-resource "aws_security_group_rule" "in_ssh" {
-  security_group_id = aws_security_group.distributed_learning_instance_sg.id
-  type              = "ingress"
-  cidr_blocks       = [var.my_ip]
-  from_port         = 22
-  to_port           = 22
-  protocol          = "tcp"
-}
-
 resource "aws_security_group_rule" "in_http" {
   type              = "ingress"
-  security_group_id = aws_security_group.distributed_learning_instance_sg.id
+  security_group_id = aws_security_group.task_sg.id
   source_security_group_id = aws_security_group.distributed_learning_alb_sg.id
   from_port         = 80
   to_port           = 80
@@ -25,7 +16,7 @@ resource "aws_security_group_rule" "in_http" {
 }
 
 resource "aws_security_group_rule" "out_all" {
-  security_group_id = aws_security_group.distributed_learning_instance_sg.id
+  security_group_id = aws_security_group.task_sg.id
   type              = "egress"
   cidr_blocks       = ["0.0.0.0/0"]
   from_port         = 0

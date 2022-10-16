@@ -12,3 +12,4 @@
 learning.pem
 learning.pem.pub
 var.tf
+provider.tf
