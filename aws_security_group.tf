@@ -24,7 +24,7 @@ resource "aws_security_group_rule" "out_all" {
   protocol          = "-1"
 }
 
-
+#DB
 resource "aws_security_group" "praivate-db-sg" {
     name = "distributed_learning_db_sg"
     vpc_id = aws_vpc.main.id
@@ -35,7 +35,7 @@ resource "aws_security_group" "praivate-db-sg" {
 
 resource "aws_security_group_rule" "in_db" {
   security_group_id = aws_security_group.praivate-db-sg.id
-  source_security_group_id = aws_security_group.praivate-db-sg.id
+  source_security_group_id = aws_security_group.task_sg.id
         type =   "ingress" 
         from_port = 3306
         to_port = 3306
