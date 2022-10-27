@@ -86,7 +86,7 @@ resource "aws_ecs_cluster" "main" {
 resource "aws_ecs_service" "main" {
   name = "distributed_learning"
 
-  depends_on = [aws_alb_listener.http]
+  depends_on = [aws_alb_listener.https]
 
   cluster = aws_ecs_cluster.main.arn
 
