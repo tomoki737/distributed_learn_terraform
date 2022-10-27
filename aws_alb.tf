@@ -5,10 +5,12 @@ resource "aws_alb" "distributed_learning_alb" {
   subnets         = [aws_subnet.public_1a.id, aws_subnet.public_1c.id]
 }
 
-resource "aws_alb_listener" "http" {
+resource "aws_alb_listener" "https" {
   load_balancer_arn = aws_alb.distributed_learning_alb.arn
-  port     = "80"
-  protocol = "HTTP"
+  certificate_arn = aws_acm_certificate.cert.arn
+  ssl_policy = "ELBSecurityPolicy-2016-08"
+  port     = "443"
+  protocol = "HTTPS"
 
   default_action {
     type             = "forward"
