@@ -1,14 +1,13 @@
-resource "aws_alb" "distributed_learning_alb" {
+resource "aws_alb" "distributed_learn_alb" {
   name               = "distributed-learn-alb"
   load_balancer_type = "application"
-  security_groups = [aws_security_group.distributed_learning_alb_sg.id]
+  security_groups = [aws_security_group.distributed_learn_alb_sg.id]
   subnets         = [aws_subnet.public_1a.id, aws_subnet.public_1c.id]
 }
 
 resource "aws_alb_listener" "https" {
-  load_balancer_arn = aws_alb.distributed_learning_alb.arn
+  load_balancer_arn = aws_alb.distributed_learn_alb.arn
   certificate_arn = aws_acm_certificate.cert.arn
-  ssl_policy = "ELBSecurityPolicy-2016-08"
   port     = "443"
   protocol = "HTTPS"
 
