@@ -1,5 +1,5 @@
-resource "aws_db_instance" "distributed_learning_db" {
-  identifier             = "distributed-learning-db"
+resource "aws_db_instance" "distributed_learn_db" {
+  identifier             = "distributed-learn-db"
   allocated_storage      = 20
   storage_type           = "gp2"
   engine                = "mysql"

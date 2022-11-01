@@ -1,5 +1,5 @@
 resource "aws_ecs_task_definition" "main" {
-  family = "distributed_learning_task_definition"
+  family = "distributed_learn_task_definition"
 
   requires_compatibilities = ["FARGATE"]
 
@@ -84,7 +84,7 @@ resource "aws_ecs_cluster" "main" {
 
 #ECS Service
 resource "aws_ecs_service" "main" {
-  name = "distributed_learning"
+  name = "distributed_learn"
 
   depends_on = [aws_alb_listener.https]
 
